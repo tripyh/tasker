@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Config.configureFlex()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let viewModel = LoginViewModel()
+        let controller = LoginController(viewModel: viewModel)
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
         return true
     }
 

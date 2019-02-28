@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04009058222873F900EE84B1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04009057222873F900EE84B1 /* LoginController.swift */; };
+		0400905A2228744700EE84B1 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040090592228744700EE84B1 /* LoginController.xib */; };
+		0400905D222874F700EE84B1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400905C222874F700EE84B1 /* LoginViewModel.swift */; };
+		0400906122287A0700EE84B1 /* KeyboardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906022287A0700EE84B1 /* KeyboardBehavior.swift */; };
+		0400906422287CD400EE84B1 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906322287CD400EE84B1 /* NetworkProvider.swift */; };
+		0400906722287CF800EE84B1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906622287CF800EE84B1 /* AuthService.swift */; };
+		0400906A22287E3D00EE84B1 /* Config+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906922287E3D00EE84B1 /* Config+Server.swift */; };
+		0400906C22287E7300EE84B1 /* Config+Flex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906B22287E7300EE84B1 /* Config+Flex.swift */; };
+		040090702228802A00EE84B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0400906F2228802A00EE84B1 /* BaseViewController.swift */; };
 		04328A3E2228712E00A69F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04328A3D2228712E00A69F12 /* AppDelegate.swift */; };
 		04328A452228712F00A69F12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04328A442228712F00A69F12 /* Assets.xcassets */; };
 		04328A482228712F00A69F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04328A462228712F00A69F12 /* LaunchScreen.storyboard */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04009057222873F900EE84B1 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		040090592228744700EE84B1 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
+		0400905C222874F700EE84B1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0400906022287A0700EE84B1 /* KeyboardBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBehavior.swift; sourceTree = "<group>"; };
+		0400906322287CD400EE84B1 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		0400906622287CF800EE84B1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		0400906922287E3D00EE84B1 /* Config+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Server.swift"; sourceTree = "<group>"; };
+		0400906B22287E7300EE84B1 /* Config+Flex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Flex.swift"; sourceTree = "<group>"; };
+		0400906F2228802A00EE84B1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04328A3A2228712E00A69F12 /* Tasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04328A3D2228712E00A69F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04328A442228712F00A69F12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +57,7 @@
 		040090522228733700EE84B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04009056222873D200EE84B1 /* SignIn */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -68,6 +87,76 @@
 			path = LounchScreen;
 			sourceTree = "<group>";
 		};
+		04009056222873D200EE84B1 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0400905B222874E100EE84B1 /* ViewModel */,
+				04009057222873F900EE84B1 /* LoginController.swift */,
+				040090592228744700EE84B1 /* LoginController.xib */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0400905B222874E100EE84B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0400905C222874F700EE84B1 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0400905E222879D800EE84B1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0400906E2228801800EE84B1 /* Base */,
+				0400905F222879DE00EE84B1 /* Behaviors */,
+				0400906222287B0800EE84B1 /* Networking */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0400905F222879DE00EE84B1 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				0400906022287A0700EE84B1 /* KeyboardBehavior.swift */,
+			);
+			path = Behaviors;
+			sourceTree = "<group>";
+		};
+		0400906222287B0800EE84B1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0400906522287CE600EE84B1 /* Services */,
+				0400906322287CD400EE84B1 /* NetworkProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0400906522287CE600EE84B1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0400906622287CF800EE84B1 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0400906822287E1500EE84B1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0400906B22287E7300EE84B1 /* Config+Flex.swift */,
+				0400906922287E3D00EE84B1 /* Config+Server.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		0400906E2228801800EE84B1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0400906F2228802A00EE84B1 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		04328A312228712E00A69F12 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				04328A3D2228712E00A69F12 /* AppDelegate.swift */,
+				0400905E222879D800EE84B1 /* Classes */,
+				0400906822287E1500EE84B1 /* Config */,
 				040090522228733700EE84B1 /* Controllers */,
 				04328A492228712F00A69F12 /* Info.plist */,
 				040090532228734300EE84B1 /* Resources */,
@@ -175,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04328A482228712F00A69F12 /* LaunchScreen.storyboard in Resources */,
+				0400905A2228744700EE84B1 /* LoginController.xib in Resources */,
 				04328A452228712F00A69F12 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +339,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0400906A22287E3D00EE84B1 /* Config+Server.swift in Sources */,
 				04328A3E2228712E00A69F12 /* AppDelegate.swift in Sources */,
+				04009058222873F900EE84B1 /* LoginController.swift in Sources */,
+				0400906122287A0700EE84B1 /* KeyboardBehavior.swift in Sources */,
+				0400906C22287E7300EE84B1 /* Config+Flex.swift in Sources */,
+				040090702228802A00EE84B1 /* BaseViewController.swift in Sources */,
+				0400906722287CF800EE84B1 /* AuthService.swift in Sources */,
+				0400905D222874F700EE84B1 /* LoginViewModel.swift in Sources */,
+				0400906422287CD400EE84B1 /* NetworkProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
