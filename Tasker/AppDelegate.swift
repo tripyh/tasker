@@ -12,17 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appCoordinator: AppFlowCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         Config.configureFlex()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let viewModel = LoginViewModel()
-        let controller = LoginController(viewModel: viewModel)
-        window?.rootViewController = controller
-        window?.makeKeyAndVisible()
+        let mainWindow = UIWindow(frame: UIScreen.main.bounds)
+        window = mainWindow
+        
+        appCoordinator = AppFlowCoordinator(window: mainWindow)
+        appCoordinator.start()
+        
         return true
     }
 
@@ -43,11 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
+extension UIApplication {
+    static var sharedCoordinator: AppFlowCoordinator {
+        return (shared.delegate as! AppDelegate).appCoordinator
+    }
+}

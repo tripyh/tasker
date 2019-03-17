@@ -11,17 +11,7 @@ import ReactiveSwift
 import Result
 import Moya
 
-struct LoginParams {
-    let email: String
-    let password: String
-}
-
-private enum ValidationResult {
-    case success(LoginParams)
-    case failure(String)
-}
-
-class LoginViewModel {
+class LoginViewModel: BaseAuthViewModel {
     
     // MARK: - Public properties
     
@@ -33,6 +23,7 @@ class LoginViewModel {
     private let showMessageObserver: Signal<String, NoError>.Observer
     private let _loading: MutableProperty<Bool> = MutableProperty(false)
     private let provider: MoyaProvider<AuthService>
+    private let keychainStorage = KeychainStorage()
     
     // MARK: - Lifecycle
     
@@ -49,8 +40,8 @@ extension LoginViewModel {
         let validationResult = validate(email: email, password: password)
         
         switch validationResult {
-        case .success(let userInfo):
-            login(userInfo)
+        case .success(let params):
+            sendLogin(params)
         case .failure(let errorMessage):
             showMessageObserver.send(value: errorMessage)
         }
@@ -60,37 +51,7 @@ extension LoginViewModel {
 // MARK: Private API
 
 private extension LoginViewModel {
-    func validate(email: String?,
-                  password: String?) -> ValidationResult {
-        
-        guard let userEmail = email,
-            !userEmail.isEmpty else {
-                let errorText = NSLocalizedString("Empty Email", comment: "Empty Email error text")
-                let validationResult: ValidationResult = .failure(errorText)
-                return validationResult
-        }
-        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
-        
-        guard predicate.evaluate(with: userEmail) else {
-            let errorText = NSLocalizedString("Wrong Email format", comment: "Wrong Email format error text")
-            let validationResult: ValidationResult = .failure(errorText)
-            return validationResult
-        }
-        
-        guard let userPassword = password,
-            !userPassword.isEmpty else {
-                let errorText = NSLocalizedString("Empty Password", comment: "Empty Password error text")
-                let validationResult: ValidationResult = .failure(errorText)
-                return validationResult
-        }
-        
-        let userInfo = LoginParams(email: userEmail, password: userPassword)
-        let validationResult: ValidationResult = .success(userInfo)
-        return validationResult
-    }
-    
-    func login(_ params: LoginParams) {
+    func sendLogin(_ params: LoginParams) {
         _loading.value = true
         
         provider.reactive.request(.login(params)).start { [weak self] event in
@@ -102,7 +63,26 @@ private extension LoginViewModel {
                 
                 strongSelf._loading.value = false
                 
-            // TODO: - add functionality
+                switch response.statusCode {
+                case 200:
+                    do {
+                        let tokenId = try JSONDecoder().decode(TokenId.self, from: response.data)
+                        strongSelf.keychainStorage.saveToken(tokenId.id)
+                        UIApplication.sharedCoordinator.login()
+                    } catch let error {
+                        strongSelf.showMessageObserver.send(value: error.localizedDescription)
+                    }
+                case 403, 422:
+                    do {
+                        let errorResponse = try JSONDecoder().decode(ErrorMessageResponse.self, from: response.data)
+                        strongSelf.showMessageObserver.send(value: errorResponse.message)
+                    } catch let error {
+                        strongSelf.showMessageObserver.send(value: error.localizedDescription)
+                    }
+                default:
+                    let errorText = NSLocalizedString("Something went wrong", comment: "Error text")
+                    strongSelf.showMessageObserver.send(value: errorText)
+                }
                 
             case let .failed(error):
                 self?._loading.value = false
@@ -113,6 +93,5 @@ private extension LoginViewModel {
                 break
             }
         }
-        
     }
 }

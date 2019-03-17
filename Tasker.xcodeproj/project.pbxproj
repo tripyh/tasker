@@ -19,6 +19,19 @@
 		04328A3E2228712E00A69F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04328A3D2228712E00A69F12 /* AppDelegate.swift */; };
 		04328A452228712F00A69F12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04328A442228712F00A69F12 /* Assets.xcassets */; };
 		04328A482228712F00A69F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04328A462228712F00A69F12 /* LaunchScreen.storyboard */; };
+		0458E787223EBB92009AC48B /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E786223EBB92009AC48B /* AppFlowCoordinator.swift */; };
+		0458E789223EBC23009AC48B /* AuthFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E788223EBC23009AC48B /* AuthFlowCoordinator.swift */; };
+		0458E78B223EBC3E009AC48B /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E78A223EBC3E009AC48B /* MainFlowCoordinator.swift */; };
+		0458E78F223EBD5B009AC48B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E78E223EBD5B009AC48B /* RegistrationController.swift */; };
+		0458E791223EBDFB009AC48B /* RegistrationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0458E790223EBDFB009AC48B /* RegistrationController.xib */; };
+		0458E794223EBEAE009AC48B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E793223EBEAE009AC48B /* RegistrationViewModel.swift */; };
+		0458E796223EC032009AC48B /* BaseAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E795223EC032009AC48B /* BaseAuthViewModel.swift */; };
+		0458E79C223ECB6E009AC48B /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E79B223ECB6E009AC48B /* TaskListController.swift */; };
+		0458E79F223ECBBC009AC48B /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E79E223ECBBC009AC48B /* TaskListViewModel.swift */; };
+		0458E7A1223ECBE6009AC48B /* TaskListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0458E7A0223ECBE6009AC48B /* TaskListController.xib */; };
+		0458E7A4223ECEF8009AC48B /* TokenId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A3223ECEF8009AC48B /* TokenId.swift */; };
+		0458E7A6223ECF49009AC48B /* ErrorMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A5223ECF49009AC48B /* ErrorMessageResponse.swift */; };
+		0458E7A9223ED024009AC48B /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A8223ED024009AC48B /* KeychainStorage.swift */; };
 		6CC77A90029E267E36FFF55B /* Pods_Tasker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02964C80EC9A8EFE0FB03CD /* Pods_Tasker.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +50,19 @@
 		04328A442228712F00A69F12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04328A472228712F00A69F12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04328A492228712F00A69F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0458E786223EBB92009AC48B /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		0458E788223EBC23009AC48B /* AuthFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowCoordinator.swift; sourceTree = "<group>"; };
+		0458E78A223EBC3E009AC48B /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		0458E78E223EBD5B009AC48B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		0458E790223EBDFB009AC48B /* RegistrationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationController.xib; sourceTree = "<group>"; };
+		0458E793223EBEAE009AC48B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		0458E795223EC032009AC48B /* BaseAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewModel.swift; sourceTree = "<group>"; };
+		0458E79B223ECB6E009AC48B /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
+		0458E79E223ECBBC009AC48B /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		0458E7A0223ECBE6009AC48B /* TaskListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListController.xib; sourceTree = "<group>"; };
+		0458E7A3223ECEF8009AC48B /* TokenId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenId.swift; sourceTree = "<group>"; };
+		0458E7A5223ECF49009AC48B /* ErrorMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageResponse.swift; sourceTree = "<group>"; };
+		0458E7A8223ED024009AC48B /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		329AF9F6D104E284A55B153B /* Pods-Tasker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tasker.debug.xcconfig"; path = "Target Support Files/Pods-Tasker/Pods-Tasker.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1D3BF4C2B117A005238BBB /* Pods-Tasker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tasker.release.xcconfig"; path = "Target Support Files/Pods-Tasker/Pods-Tasker.release.xcconfig"; sourceTree = "<group>"; };
 		E02964C80EC9A8EFE0FB03CD /* Pods_Tasker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tasker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +83,8 @@
 		040090522228733700EE84B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04009056222873D200EE84B1 /* SignIn */,
+				0458E799223EC856009AC48B /* MainFlow */,
+				0458E78C223EBD2E009AC48B /* AuthFlow */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -65,8 +92,8 @@
 		040090532228734300EE84B1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				040090552228735C00EE84B1 /* LounchScreen */,
 				040090542228734F00EE84B1 /* Images */,
+				040090552228735C00EE84B1 /* LaunchScreen */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -79,12 +106,12 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		040090552228735C00EE84B1 /* LounchScreen */ = {
+		040090552228735C00EE84B1 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				04328A462228712F00A69F12 /* LaunchScreen.storyboard */,
 			);
-			path = LounchScreen;
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		04009056222873D200EE84B1 /* SignIn */ = {
@@ -110,6 +137,8 @@
 			children = (
 				0400906E2228801800EE84B1 /* Base */,
 				0400905F222879DE00EE84B1 /* Behaviors */,
+				0458E785223EBB7D009AC48B /* FlowCoordinators */,
+				0458E7A7223ED005009AC48B /* KeychainStorage */,
 				0400906222287B0800EE84B1 /* Networking */,
 			);
 			path = Classes;
@@ -126,8 +155,9 @@
 		0400906222287B0800EE84B1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				0400906522287CE600EE84B1 /* Services */,
 				0400906322287CD400EE84B1 /* NetworkProvider.swift */,
+				0458E7A2223ECEE3009AC48B /* Models */,
+				0400906522287CE600EE84B1 /* Services */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -152,7 +182,8 @@
 		0400906E2228801800EE84B1 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				0400906F2228802A00EE84B1 /* BaseViewController.swift */,
+				0458E797223EC088009AC48B /* Controllers */,
+				0458E798223EC092009AC48B /* ViewModels */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -179,13 +210,109 @@
 			isa = PBXGroup;
 			children = (
 				04328A3D2228712E00A69F12 /* AppDelegate.swift */,
+				04328A492228712F00A69F12 /* Info.plist */,
 				0400905E222879D800EE84B1 /* Classes */,
 				0400906822287E1500EE84B1 /* Config */,
 				040090522228733700EE84B1 /* Controllers */,
-				04328A492228712F00A69F12 /* Info.plist */,
 				040090532228734300EE84B1 /* Resources */,
 			);
 			path = Tasker;
+			sourceTree = "<group>";
+		};
+		0458E785223EBB7D009AC48B /* FlowCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0458E786223EBB92009AC48B /* AppFlowCoordinator.swift */,
+				0458E788223EBC23009AC48B /* AuthFlowCoordinator.swift */,
+				0458E78A223EBC3E009AC48B /* MainFlowCoordinator.swift */,
+			);
+			path = FlowCoordinators;
+			sourceTree = "<group>";
+		};
+		0458E78C223EBD2E009AC48B /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				0458E78D223EBD3D009AC48B /* Registration */,
+				04009056222873D200EE84B1 /* SignIn */,
+			);
+			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		0458E78D223EBD3D009AC48B /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				0458E792223EBE9B009AC48B /* ViewModel */,
+				0458E78E223EBD5B009AC48B /* RegistrationController.swift */,
+				0458E790223EBDFB009AC48B /* RegistrationController.xib */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		0458E792223EBE9B009AC48B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0458E793223EBEAE009AC48B /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0458E797223EC088009AC48B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0400906F2228802A00EE84B1 /* BaseViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0458E798223EC092009AC48B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0458E795223EC032009AC48B /* BaseAuthViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0458E799223EC856009AC48B /* MainFlow */ = {
+			isa = PBXGroup;
+			children = (
+				0458E79A223ECB5A009AC48B /* TaskList */,
+			);
+			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		0458E79A223ECB5A009AC48B /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				0458E79D223ECBA8009AC48B /* ViewModel */,
+				0458E79B223ECB6E009AC48B /* TaskListController.swift */,
+				0458E7A0223ECBE6009AC48B /* TaskListController.xib */,
+			);
+			path = TaskList;
+			sourceTree = "<group>";
+		};
+		0458E79D223ECBA8009AC48B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0458E79E223ECBBC009AC48B /* TaskListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0458E7A2223ECEE3009AC48B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0458E7A5223ECF49009AC48B /* ErrorMessageResponse.swift */,
+				0458E7A3223ECEF8009AC48B /* TokenId.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0458E7A7223ED005009AC48B /* KeychainStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0458E7A8223ED024009AC48B /* KeychainStorage.swift */,
+			);
+			path = KeychainStorage;
 			sourceTree = "<group>";
 		};
 		CF491B7B76DB875EC2D0F722 /* Pods */ = {
@@ -267,6 +394,8 @@
 			files = (
 				04328A482228712F00A69F12 /* LaunchScreen.storyboard in Resources */,
 				0400905A2228744700EE84B1 /* LoginController.xib in Resources */,
+				0458E791223EBDFB009AC48B /* RegistrationController.xib in Resources */,
+				0458E7A1223ECBE6009AC48B /* TaskListController.xib in Resources */,
 				04328A452228712F00A69F12 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,13 +470,24 @@
 			files = (
 				0400906A22287E3D00EE84B1 /* Config+Server.swift in Sources */,
 				04328A3E2228712E00A69F12 /* AppDelegate.swift in Sources */,
+				0458E79F223ECBBC009AC48B /* TaskListViewModel.swift in Sources */,
+				0458E787223EBB92009AC48B /* AppFlowCoordinator.swift in Sources */,
+				0458E7A4223ECEF8009AC48B /* TokenId.swift in Sources */,
+				0458E794223EBEAE009AC48B /* RegistrationViewModel.swift in Sources */,
 				04009058222873F900EE84B1 /* LoginController.swift in Sources */,
 				0400906122287A0700EE84B1 /* KeyboardBehavior.swift in Sources */,
+				0458E79C223ECB6E009AC48B /* TaskListController.swift in Sources */,
+				0458E78B223EBC3E009AC48B /* MainFlowCoordinator.swift in Sources */,
 				0400906C22287E7300EE84B1 /* Config+Flex.swift in Sources */,
+				0458E796223EC032009AC48B /* BaseAuthViewModel.swift in Sources */,
 				040090702228802A00EE84B1 /* BaseViewController.swift in Sources */,
 				0400906722287CF800EE84B1 /* AuthService.swift in Sources */,
 				0400905D222874F700EE84B1 /* LoginViewModel.swift in Sources */,
+				0458E7A6223ECF49009AC48B /* ErrorMessageResponse.swift in Sources */,
 				0400906422287CD400EE84B1 /* NetworkProvider.swift in Sources */,
+				0458E7A9223ED024009AC48B /* KeychainStorage.swift in Sources */,
+				0458E789223EBC23009AC48B /* AuthFlowCoordinator.swift in Sources */,
+				0458E78F223EBD5B009AC48B /* RegistrationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

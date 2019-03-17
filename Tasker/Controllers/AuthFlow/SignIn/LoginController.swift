@@ -12,6 +12,8 @@ import Result
 
 class LoginController: BaseViewController {
     
+    var registrationButtonPressed: (() -> Void)?
+    
     // MARK: - Private properties
     
     @IBOutlet private var scrollView: UIScrollView!
@@ -100,7 +102,7 @@ private extension LoginController {
 private extension LoginController {
     @IBAction func registerButtonPressed() {
         view.endEditing(true)
-        // TODO: - add functionality
+        registrationButtonPressed?()
     }
     
     @IBAction func loginButtonPressed() {
