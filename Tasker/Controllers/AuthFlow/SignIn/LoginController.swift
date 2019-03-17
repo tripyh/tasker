@@ -10,19 +10,15 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
-class LoginController: BaseViewController {
+class LoginController: BaseAuthController {
+    
+    // MARK: - Public properties
     
     var registrationButtonPressed: (() -> Void)?
     
     // MARK: - Private properties
     
-    @IBOutlet private var scrollView: UIScrollView!
-    @IBOutlet private var loginTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet private var loaderView: UIActivityIndicatorView!
-    
     private let viewModel: LoginViewModel
-    private var keyboardBehavior: KeyboardBehavior?
     private let (lifetime, token) = Lifetime.make()
     
     private var showMessage: BindingTarget<String> {
@@ -48,16 +44,6 @@ class LoginController: BaseViewController {
         configure()
         addDismissGestureRecognizer()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        keyboardBehavior?.setActive(value: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        keyboardBehavior?.setActive(value: false)
-    }
 }
 
 // MARK: Binding
@@ -67,33 +53,6 @@ private extension LoginController {
         view.reactive.isUserInteractionEnabled <~ viewModel.loading.negate()
         loaderView.reactive.isAnimating <~ viewModel.loading
         showMessage <~ viewModel.showMessage
-    }
-}
-
-// MARK: - Configure
-
-private extension LoginController {
-    func configure() {
-        keyboardBehavior = KeyboardBehavior(heightDidChange: { [weak self] (height, duration) -> Void in
-            guard let strongSelf = self else {
-                return
-            }
-            
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
-            
-            UIView.animate(withDuration: TimeInterval(duration), animations: {
-                strongSelf.scrollView.contentInset = contentInsets
-            })
-        })
-    }
-    
-    func addDismissGestureRecognizer() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 

@@ -10,17 +10,11 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 
-class RegistrationController: BaseViewController {
+class RegistrationController: BaseAuthController {
     
     // MARK: - Private properties
     
-    @IBOutlet private var scrollView: UIScrollView!
-    @IBOutlet private var loginTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet private var loaderView: UIActivityIndicatorView!
-    
     private let viewModel: RegistrationViewModel
-    private var keyboardBehavior: KeyboardBehavior?
     private let (lifetime, token) = Lifetime.make()
     
     private var showMessage: BindingTarget<String> {
@@ -46,16 +40,6 @@ class RegistrationController: BaseViewController {
         configure()
         addDismissGestureRecognizer()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        keyboardBehavior?.setActive(value: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        keyboardBehavior?.setActive(value: false)
-    }
 }
 
 // MARK: Binding
@@ -68,33 +52,6 @@ private extension RegistrationController {
     }
 }
 
-// MARK: - Configure
-
-private extension RegistrationController {
-    func configure() {
-        keyboardBehavior = KeyboardBehavior(heightDidChange: { [weak self] (height, duration) -> Void in
-            guard let strongSelf = self else {
-                return
-            }
-
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
-            
-            UIView.animate(withDuration: TimeInterval(duration), animations: {
-                strongSelf.scrollView.contentInset = contentInsets
-            })
-        })
-    }
-    
-    func addDismissGestureRecognizer() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
 // MARK: - Actions
 
 private extension RegistrationController {
@@ -104,4 +61,3 @@ private extension RegistrationController {
                          password: passwordTextField.text)
     }
 }
-

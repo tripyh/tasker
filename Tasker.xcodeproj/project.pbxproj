@@ -32,6 +32,7 @@
 		0458E7A4223ECEF8009AC48B /* TokenId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A3223ECEF8009AC48B /* TokenId.swift */; };
 		0458E7A6223ECF49009AC48B /* ErrorMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A5223ECF49009AC48B /* ErrorMessageResponse.swift */; };
 		0458E7A9223ED024009AC48B /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7A8223ED024009AC48B /* KeychainStorage.swift */; };
+		0458E7AB223ED384009AC48B /* BaseAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458E7AA223ED384009AC48B /* BaseAuthController.swift */; };
 		6CC77A90029E267E36FFF55B /* Pods_Tasker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02964C80EC9A8EFE0FB03CD /* Pods_Tasker.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		0458E7A3223ECEF8009AC48B /* TokenId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenId.swift; sourceTree = "<group>"; };
 		0458E7A5223ECF49009AC48B /* ErrorMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageResponse.swift; sourceTree = "<group>"; };
 		0458E7A8223ED024009AC48B /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		0458E7AA223ED384009AC48B /* BaseAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthController.swift; sourceTree = "<group>"; };
 		329AF9F6D104E284A55B153B /* Pods-Tasker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tasker.debug.xcconfig"; path = "Target Support Files/Pods-Tasker/Pods-Tasker.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1D3BF4C2B117A005238BBB /* Pods-Tasker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tasker.release.xcconfig"; path = "Target Support Files/Pods-Tasker/Pods-Tasker.release.xcconfig"; sourceTree = "<group>"; };
 		E02964C80EC9A8EFE0FB03CD /* Pods_Tasker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tasker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				0400906F2228802A00EE84B1 /* BaseViewController.swift */,
+				0458E7AA223ED384009AC48B /* BaseAuthController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				0458E7A9223ED024009AC48B /* KeychainStorage.swift in Sources */,
 				0458E789223EBC23009AC48B /* AuthFlowCoordinator.swift in Sources */,
 				0458E78F223EBD5B009AC48B /* RegistrationController.swift in Sources */,
+				0458E7AB223ED384009AC48B /* BaseAuthController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
