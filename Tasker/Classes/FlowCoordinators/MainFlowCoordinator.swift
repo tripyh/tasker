@@ -18,12 +18,23 @@ class MainFlowCoordinator: ChildCoordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
         let viewModel = TaskListViewModel()
         let controller = TaskListController(viewModel: viewModel)
+        
+        controller.createNewTaskButonPressed = { [weak self] in
+            let createTaskViewModel = CreateTaskViewModel()
+            let createTaskController = CreateTaskController(viewModel: createTaskViewModel)
+            
+            createTaskController.taskCreated = { [weak self] in
+                self?.navigationController.popViewController(animated: true)
+            }
+            
+            self?.navigationController.pushViewController(createTaskController, animated: true)
+        }
+        
         navigationController.setViewControllers([ controller ], animated: true)
     }
 }
