@@ -23,6 +23,7 @@ class CreateTaskController: BaseViewController {
     @IBOutlet private var mediumPriorityButton: UIButton!
     @IBOutlet private var lowPriorityButton: UIButton!
     @IBOutlet private var loaderView: UIActivityIndicatorView!
+    @IBOutlet private var saveButton: UIButton!
     
     private let viewModel: CreateTaskViewModel
     private let (lifetime, token) = Lifetime.make()
@@ -65,6 +66,27 @@ private extension CreateTaskController {
         titleTextView.layer.borderWidth = 1
         titleTextView.layer.borderColor = UIColor.gray.cgColor
         title = viewModel.title
+        saveButton.setTitle(viewModel.saveButtonTitle, for: .normal)
+        titleTextView.text = viewModel.editTaskTitle
+        
+        guard let taskPriorityActual = viewModel.editTaskPriority else {
+            return
+        }
+        
+        switch taskPriorityActual {
+        case .High:
+            selectedStyle(for: highPriorityButton)
+            unselectedStyle(for: mediumPriorityButton)
+            unselectedStyle(for: lowPriorityButton)
+        case .Normal:
+            selectedStyle(for: mediumPriorityButton)
+            unselectedStyle(for: highPriorityButton)
+            unselectedStyle(for: lowPriorityButton)
+        case .Low:
+            selectedStyle(for: lowPriorityButton)
+            unselectedStyle(for: highPriorityButton)
+            unselectedStyle(for: mediumPriorityButton)
+        }
     }
 }
 
@@ -103,8 +125,8 @@ private extension CreateTaskController {
         viewModel.lowPrioritySelected()
     }
     
-    @IBAction func continueButtonPressed() {
-        viewModel.continuePressed(titleTextView.text)
+    @IBAction func saveButtonPressed() {
+        viewModel.savePressed(titleTextView.text)
     }
 }
 

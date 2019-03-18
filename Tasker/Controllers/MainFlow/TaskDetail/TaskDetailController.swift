@@ -15,6 +15,7 @@ class TaskDetailController: BaseViewController {
     // MARK: - Public properties
     
     var taskDeleted: (() -> Void)?
+    var taskEdit: ((TaskItem) -> Void)?
     
     // MARK: - Private properties
     
@@ -63,6 +64,11 @@ private extension TaskDetailController {
         titleLabel.text = viewModel.taskTitle
         priorityLabel.text = viewModel.taskPriority
         priorityLabel.textColor = viewModel.taskPriorityColor
+        
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                         target: self,
+                                         action: #selector(editButtonPressed))
+        navigationItem.rightBarButtonItem = editButton
     }
 }
 
@@ -82,5 +88,9 @@ private extension TaskDetailController {
 private extension TaskDetailController {
     @IBAction func deleteButtonPressed() {
         viewModel.deleteTask()
+    }
+    
+    @objc func editButtonPressed() {
+        taskEdit?(viewModel.taskForEdit)
     }
 }

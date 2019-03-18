@@ -36,6 +36,11 @@ private enum ValidationResult {
     case failure(String)
 }
 
+enum CreateTaskState {
+    case new
+    case edit
+}
+
 class CreateTaskViewModel {
     
     // MARK: - Public properties
@@ -45,7 +50,29 @@ class CreateTaskViewModel {
     let createdTask: Signal<(), NoError>
     
     var title: String {
-        return NSLocalizedString("Create task", comment: "Create task title")
+        switch createTaskState {
+        case .new:
+            return NSLocalizedString("Create task", comment: "Create task title")
+        case .edit:
+            return NSLocalizedString("Edit task", comment: "Create task title")
+        }
+    }
+    
+    var saveButtonTitle: String {
+        switch createTaskState {
+        case .new:
+            return NSLocalizedString("Save", comment: "Save button title")
+        case .edit:
+            return NSLocalizedString("Update", comment: "Save button title")
+        }
+    }
+    
+    var editTaskTitle: String? {
+        return taskItem?.title
+    }
+    
+    var editTaskPriority: TaskPriority? {
+        return taskItem?.priority
     }
     
     // MARK: - Private properties
@@ -54,12 +81,20 @@ class CreateTaskViewModel {
     private let _loading: MutableProperty<Bool> = MutableProperty(false)
     private let createdTaskObserver: Signal<(), NoError>.Observer
     private let provider: MoyaProvider<TaskService>
+    private let createTaskState: CreateTaskState
     
     private var taskTitle: String?
     private var taskPriority: TaskPriority?
+    private let taskItem: TaskItem?
     
-    init(provider: MoyaProvider<TaskService> = MoyaProvider<TaskService>()) {
+    init(provider: MoyaProvider<TaskService> = MoyaProvider<TaskService>(),
+         createTaskState: CreateTaskState,
+         taskItem: TaskItem?) {
         self.provider = provider
+        self.createTaskState = createTaskState
+        self.taskItem = taskItem
+        taskPriority = taskItem?.priority
+        taskTitle = taskItem?.title
         (showMessage, showMessageObserver) = Signal.pipe()
         (createdTask, createdTaskObserver) = Signal.pipe()
     }
@@ -80,14 +115,27 @@ extension CreateTaskViewModel {
         taskPriority = .Low
     }
     
-    func continuePressed(_ titleText: String) {
+    func savePressed(_ titleText: String) {
         taskTitle = titleText
         
         let validationResult = validate()
         
         switch validationResult {
         case .success(let newTask):
-            createNewTask(newTask)
+            switch createTaskState {
+            case .new:
+                createNewTask(newTask)
+            case .edit:
+                guard let taskActual = taskItem else {
+                    let taskErrorMessage = NSLocalizedString("Task not valid", comment: "Task error message")
+                    showMessageObserver.send(value: taskErrorMessage)
+                    return
+                }
+                let updatedtask = TaskItem(id: taskActual.id,
+                                           title: newTask.title,
+                                           priority: newTask.priority)
+                updateTask(updatedtask)
+            }
         case .failure(let message):
             showMessageObserver.send(value: message)
         }
@@ -132,6 +180,44 @@ private extension CreateTaskViewModel {
                 
                 switch response.statusCode {
                 case 201:
+                    strongSelf.createdTaskObserver.send(value: ())
+                case 403, 422:
+                    do {
+                        let errorResponse = try JSONDecoder().decode(ErrorMessageResponse.self, from: response.data)
+                        strongSelf.showMessageObserver.send(value: errorResponse.message)
+                    } catch let error {
+                        strongSelf.showMessageObserver.send(value: error.localizedDescription)
+                    }
+                default:
+                    let errorText = NSLocalizedString("Something went wrong", comment: "Error text")
+                    strongSelf.showMessageObserver.send(value: errorText)
+                }
+                
+            case let .failed(error):
+                self?._loading.value = false
+                self?.showMessageObserver.send(value: error.localizedDescription)
+            case .interrupted:
+                self?._loading.value = false
+            default:
+                break
+            }
+        }
+    }
+    
+    func updateTask(_ updatedTask: TaskItem) {
+        _loading.value = true
+        
+        provider.reactive.request(.update(updatedTask)).start { [weak self] event in
+            switch event {
+            case .value(let response):
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                strongSelf._loading.value = false
+                
+                switch response.statusCode {
+                case 202:
                     strongSelf.createdTaskObserver.send(value: ())
                 case 403, 422:
                     do {

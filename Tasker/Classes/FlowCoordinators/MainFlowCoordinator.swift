@@ -25,7 +25,7 @@ class MainFlowCoordinator: ChildCoordinator {
         let controller = TaskListController(viewModel: viewModel)
         
         controller.createNewTaskButonPressed = { [weak self] in
-            let createTaskViewModel = CreateTaskViewModel()
+            let createTaskViewModel = CreateTaskViewModel(createTaskState: .new, taskItem: nil)
             let createTaskController = CreateTaskController(viewModel: createTaskViewModel)
             
             createTaskController.taskCreated = { [weak self] in
@@ -41,6 +41,17 @@ class MainFlowCoordinator: ChildCoordinator {
             
             taskDetailController.taskDeleted = { [weak self] in
                 self?.navigationController.popViewController(animated: true)
+            }
+            
+            taskDetailController.taskEdit = { [weak self] taskItem in
+                let createTaskViewModel = CreateTaskViewModel(createTaskState: .edit, taskItem: taskItem)
+                let createTaskController = CreateTaskController(viewModel: createTaskViewModel)
+                
+                createTaskController.taskCreated = { [weak self] in
+                    self?.navigationController.popToRootViewController(animated: true)
+                }
+                
+                self?.navigationController.pushViewController(createTaskController, animated: true)
             }
             
             self?.navigationController.pushViewController(taskDetailController, animated: true)

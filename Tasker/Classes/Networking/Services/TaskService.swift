@@ -17,6 +17,7 @@ enum TaskService: NetworkTarget {
     case taskList
     case newTask(_ taskParams: NewTaskParams)
     case delete(_ taskId: Int)
+    case update(_ taskParams: TaskItem)
     
     var path: String {
         switch self {
@@ -24,6 +25,8 @@ enum TaskService: NetworkTarget {
             return "tasks"
         case .delete(let taskId):
             return "tasks/\(taskId)"
+        case .update(let task):
+            return "tasks/\(task.id)"
         }
     }
     
@@ -35,6 +38,8 @@ enum TaskService: NetworkTarget {
             return .post
         case .delete:
             return .delete
+        case .update:
+            return .put
         }
     }
     
@@ -49,6 +54,11 @@ enum TaskService: NetworkTarget {
                                       encoding: JSONEncoding.default)
         case .delete:
             return .requestPlain
+        case .update(let task):
+            let newTask = [Constants.title: task.title,
+                           Constants.priority: task.priority.rawValue]
+            return .requestParameters(parameters: newTask,
+                                      encoding: JSONEncoding.default)
         }
     }
     

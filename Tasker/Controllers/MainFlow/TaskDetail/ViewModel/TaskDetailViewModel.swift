@@ -19,6 +19,10 @@ class TaskDetailViewModel {
     var loading: Property<Bool> { return Property(_loading) }
     let deletedTask: Signal<(), NoError>
     
+    var taskForEdit: TaskItem {
+        return task
+    }
+    
     var title: String {
         return NSLocalizedString("Task Detail", comment: "Task Detail title")
     }
