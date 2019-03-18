@@ -16,9 +16,15 @@ private struct Constants {
 enum TaskService: NetworkTarget {
     case taskList
     case newTask(_ taskParams: NewTaskParams)
+    case delete(_ taskId: Int)
     
     var path: String {
-        return "tasks"
+        switch self {
+        case .taskList, .newTask:
+            return "tasks"
+        case .delete(let taskId):
+            return "tasks/\(taskId)"
+        }
     }
     
     var method: Moya.Method {
@@ -27,6 +33,8 @@ enum TaskService: NetworkTarget {
             return .get
         case .newTask:
             return .post
+        case .delete:
+            return .delete
         }
     }
     
@@ -39,6 +47,8 @@ enum TaskService: NetworkTarget {
                              Constants.priority: newTaskParams.priority.rawValue]
             return .requestParameters(parameters: newTask,
                                       encoding: JSONEncoding.default)
+        case .delete:
+            return .requestPlain
         }
     }
     

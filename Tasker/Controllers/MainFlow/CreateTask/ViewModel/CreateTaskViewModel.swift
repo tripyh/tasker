@@ -13,6 +13,17 @@ import Moya
 
 enum TaskPriority: String, Decodable {
     case Low, Normal, High
+    
+    var color: UIColor {
+        switch self {
+        case .High:
+            return .red
+        case .Normal:
+            return UIColor(red: 0/255.0, green: 122/255.0, blue: 1, alpha: 1.0)
+        case .Low:
+            return .green
+        }
+    }
 }
 
 struct NewTaskParams {

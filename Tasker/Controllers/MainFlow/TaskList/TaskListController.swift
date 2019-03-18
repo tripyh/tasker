@@ -15,6 +15,7 @@ class TaskListController: BaseViewController {
     // MARK: - Public properties
     
     var createNewTaskButonPressed: (() -> Void)?
+    var taskDetailPressed: ((TaskItem) -> Void)?
     
     // MARK: - Private properties
     
@@ -44,6 +45,10 @@ class TaskListController: BaseViewController {
         super.viewDidLoad()
         configure()
         bindingViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.loadTaskList()
     }
 }
@@ -91,6 +96,7 @@ extension TaskListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TaskListCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         let task = viewModel.task(at: indexPath.row)
         cell.configure(task)
         return cell
@@ -102,6 +108,12 @@ extension TaskListController: UITableViewDataSource {
 extension TaskListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let taskActual = viewModel.task(at: indexPath.row) else {
+            return
+        }
+        
+        taskDetailPressed?(taskActual)
     }
 }
 

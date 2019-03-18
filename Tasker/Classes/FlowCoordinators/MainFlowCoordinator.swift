@@ -35,6 +35,17 @@ class MainFlowCoordinator: ChildCoordinator {
             self?.navigationController.pushViewController(createTaskController, animated: true)
         }
         
+        controller.taskDetailPressed = { [weak self] taskItem in
+            let taskDetailViewModel = TaskDetailViewModel(task: taskItem)
+            let taskDetailController = TaskDetailController(viewModel: taskDetailViewModel)
+            
+            taskDetailController.taskDeleted = { [weak self] in
+                self?.navigationController.popViewController(animated: true)
+            }
+            
+            self?.navigationController.pushViewController(taskDetailController, animated: true)
+        }
+        
         navigationController.setViewControllers([ controller ], animated: true)
     }
 }
